@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+venv/
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Build outputs
+dist/
+build/
+*.pyc
+__pycache__/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Vector indices
+*.index
+*.faiss
+*.hnsw
+
+# Cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Secrets (never commit)
+*.pem
+*.key
+*.crt
+secrets/
+credentials/
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
