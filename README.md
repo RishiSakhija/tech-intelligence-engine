@@ -102,15 +102,17 @@ The technology ecosystem—especially AI/ML—evolves faster than any human can 
 
 ## Current Status
 
-**Phase 0: Foundation & Research** (Current)
+**Phase 0: Foundation & Research** (Complete)
 - [x] Repository initialized
-- [ ] Project constitution & product vision
-- [ ] Competitor analysis
-- [ ] Data source strategy
-- [ ] Search architecture design
-- [ ] System architecture & data model
-- [ ] Evaluation framework
-- [ ] Roadmap & MVP definition
+- [x] Project constitution & product vision
+- [x] Competitor analysis
+- [x] Data source strategy
+- [x] Search architecture design
+- [x] System architecture & data model
+- [x] Evaluation framework
+- [x] Roadmap & MVP definition
+- [x] Cross-check & consistency audit
+- [x] Initial ADRs (10 architectural decisions documented)
 
 **Phase 1: Data Foundation** (Next)
 - [ ] Ingestion framework
@@ -205,6 +207,14 @@ tech-intelligence-engine/
 | [Security](docs/SECURITY.md) | Threat model, mitigations, agent risks |
 | [Evaluation](docs/EVALUATION.md) | Benchmarks, metrics, quality gates |
 | [Roadmap](docs/ROADMAP.md) | Phased delivery plan |
+
+## Project Understanding & Onboarding
+
+| Document | Purpose |
+|----------|---------|
+| [Project Walkthrough](docs/PROJECT_WALKTHROUGH.md) | Complete technical and product walkthrough |
+| [Team Onboarding](docs/TEAM_ONBOARDING.md) | Guide for new contributors and team workflow |
+| [Glossary](docs/GLOSSARY.md) | Definitions of important project terms |
 
 ## Future Demo Section
 
