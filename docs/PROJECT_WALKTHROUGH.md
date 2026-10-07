@@ -5,6 +5,21 @@
 
 ---
 
+## 0. Locked Project Goal
+
+**Primary Goal**: Build a personalized, vertical Tech Intelligence Engine that helps users discover, search, understand, and track the rapidly changing technology ecosystem through high-quality technical sources, entity relationships, freshness, personalization, and evidence-backed intelligence.
+
+**This is NOT**:
+- A Google replacement
+- A generic web search engine
+- An RSS/news aggregator
+- A chatbot wrapper
+- A code completion tool
+
+**Core Long-Term Value**: Search + Discovery + Tracking + Technical Context + Personalization + Evidence-backed Research.
+
+---
+
 ## 1. What We Are Building
 
 **Tech Intelligence Engine** is a **vertical search and intelligence platform** focused exclusively on the rapidly changing technology ecosystem—especially AI/ML, models, papers, frameworks, releases, benchmarks, and the researchers and companies behind them.
@@ -23,6 +38,19 @@ It **is**:
 - A **freshness-first** system with multi-source change detection
 - An **entity-centric** knowledge graph connecting papers, models, code, researchers, companies, benchmarks, and releases
 - An **agentic research** platform for complex multi-step technical investigations with citations and verification
+
+---
+
+## $0 Development Constraint
+
+Development and MVP validation must be achievable with a **$0 infrastructure/API budget** using open-source software, local execution, and genuinely free public APIs/services where available.
+
+- Paid APIs are **NOT required** for core development
+- Paid services may be considered only in a future production phase
+- External free services are **replaceable dependencies**
+- Architecture must remain **local-first**
+- No vendor should become a **hard dependency** for the MVP
+- Do NOT claim free tiers are permanent or unlimited
 
 ---
 

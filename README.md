@@ -2,6 +2,63 @@
 
 > A personalized intelligence engine for discovering, understanding, and tracking the rapidly changing technology ecosystem.
 
+## Locked Project Goal
+
+Build a personalized, vertical Tech Intelligence Engine that helps users discover, search, understand, and track the rapidly changing technology ecosystem through high-quality technical sources, entity relationships, freshness, personalization, and evidence-backed intelligence.
+
+**This is NOT**:
+- A Google replacement
+- A generic web search engine
+- An RSS/news aggregator
+- A chatbot wrapper
+- A code completion tool
+
+**Core Long-Term Value**: Search + Discovery + Tracking + Technical Context + Personalization + Evidence-backed Research.
+
+---
+
+## Current Build Goal
+
+| Item | Current State |
+|------|---------------|
+| **Project** | Tech Intelligence Engine |
+| **Stage** | Foundation complete |
+| **Current implementation goal** | **Goal 1 — First Real Data Slice** (ArXiv ingestion → PostgreSQL) |
+| **Budget** | **$0** (local-first, open-source only) |
+| **Architecture style** | Local-first / open-source / replaceable dependencies |
+| **Agents** | Used only where justified (deterministic by default) |
+| **Implementation** | Not started |
+
+---
+
+## Zero-Budget Constraint
+
+Development and MVP validation must be achievable with a **$0 infrastructure/API budget** using open-source software, local execution, and genuinely free public APIs/services where available.
+
+- Paid APIs are **NOT required** for core development
+- Paid services may be considered only in a future production phase
+- External free services are **replaceable dependencies**
+- Architecture must remain **local-first**
+- No vendor should become a **hard dependency** for the MVP
+- Do NOT claim free tiers are permanent or unlimited
+
+---
+
+## Development Philosophy
+
+1. **Evidence over intuition** — Every architectural claim backed by research or experiment
+2. **Vertical depth over horizontal breadth** — Own the tech ecosystem completely before expanding
+3. **Simplicity first** — Start with deterministic pipelines; add agents only where they add clear value
+4. **Measurable quality** — Search quality evaluated against benchmarks, not vibes
+5. **Source transparency** — Every result traceable to source; citations mandatory
+6. **User control** — Personalization explainable and adjustable
+7. **Freshness as feature** — Ingestion latency measured and optimized
+8. **No vendor lock-in** — Open-source components preferred; avoid proprietary APIs where alternatives exist
+9. **$0 budget** — Development and MVP validation at $0 infrastructure cost
+10. **Incremental goals** — Each small goal leaves architecture in a better validated state
+
+---
+
 ## Product Thesis
 
 The technology ecosystem—especially AI/ML—evolves faster than any human can track. New models, papers, frameworks, releases, and benchmarks appear daily. Existing solutions are either too broad (Google), too narrow (arXiv RSS), too social (Twitter/X), or too shallow (news aggregators).
@@ -215,6 +272,7 @@ tech-intelligence-engine/
 | [Project Walkthrough](docs/PROJECT_WALKTHROUGH.md) | Complete technical and product walkthrough |
 | [Team Onboarding](docs/TEAM_ONBOARDING.md) | Guide for new contributors and team workflow |
 | [Glossary](docs/GLOSSARY.md) | Definitions of important project terms |
+| [Build Goals](docs/BUILD_GOALS.md) | Incremental engineering strategy and goals |
 
 ## Future Demo Section
 

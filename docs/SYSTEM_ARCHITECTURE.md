@@ -4,6 +4,18 @@
 
 ---
 
+## $0 Development Constraint
+
+Development and MVP validation must be achievable with a **$0 infrastructure/API budget** using open-source software, local execution, and genuinely free public APIs/services where available.
+
+- Paid APIs are **NOT required** for core development
+- Paid services may be considered only in a future production phase
+- External free services are **replaceable dependencies**
+- Architecture must remain **local-first**
+- No vendor should become a **hard dependency** for the MVP
+
+---
+
 ## 1. Architecture Overview
 
 ```
@@ -201,12 +213,12 @@ Scheduled (every 15 min) + On-Demand:
 |-------|--------|------------------------|-----------|
 | **API Framework** | FastAPI | Flask, Django, Go (Gin), Node (Express) | Python ecosystem for ML; async; OpenAPI; type safety |
 | **Primary DB** | PostgreSQL 16+ | MySQL, MongoDB, CockroachDB | Relational for entities/relations; JSONB for flexibility; mature |
-| **Lexical Search** | Elasticsearch 8+ | OpenSearch, Typesense, Meilisearch | Hybrid search; mature; filtering; scaling |
+| **Lexical Search** | **OpenSearch (preferred)** | Elasticsearch, Typesense, Meilisearch | **Open-source, self-hosted, hybrid search capable; $0 license**; validation required |
 | **Vector DB** | Qdrant | Weaviate, Pinecone, Milvus, Chroma | Open-source; filtering; Rust performance; local dev |
 | **Cache/Queue** | Redis 7+ | RabbitMQ, Kafka, Redis Streams | Simple; streams for queues; pub/sub for invalidation |
 | **Embedding Model** | BAAI/bge-large-en-v1.5 | bge-m3, nomic-embed, e5-large, OpenAI | MIT license; strong benchmarks; local inference |
 | **Reranker** | BAAI/bge-reranker-large | bge-reranker-v2, Cohere, Jina | MIT license; strong; local |
-| **LLM Provider** | Multi-provider (OpenAI, Anthropic, Local) | Single provider | Cost optimization; redundancy; local for sensitive |
+| **LLM Provider** | **Local-first (Ollama/vLLM)** | OpenAI, Anthropic, Google, OpenRouter | **$0 budget; local-first; provider-agnostic** |
 | **Frontend** | Next.js 14+ (React 18, TypeScript) | Remix, SvelteKit, vanilla | App Router; RSC; Vercel deploy; ecosystem |
 | **Orchestration** | Temporal (or Celery + Redis Streams) | Airflow, Dagster, custom | Durable execution; retries; visibility |
 | **Observability** | OpenTelemetry + Prometheus + Grafana | Datadog, Honeycomb | Open standards; self-hosted; cost |

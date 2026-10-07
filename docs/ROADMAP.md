@@ -4,12 +4,41 @@
 
 ---
 
+## $0 Development Constraint
+
+Development and MVP validation must be achievable with a **$0 infrastructure/API budget** using open-source software, local execution, and genuinely free public APIs/services where available.
+
+- Paid APIs are **NOT required** for core development
+- Paid services may be considered only in a future production phase
+- External free services are **replaceable dependencies**
+- Architecture must remain **local-first**
+- No vendor should become a **hard dependency** for the MVP
+- Do NOT claim free tiers are permanent or unlimited
+
+---
+
+## Incremental Scale Targets
+
+The project intentionally starts small. Scale increases only after correctness, search quality, ingestion reliability, resource usage, and evaluation results justify it.
+
+| Goal | Target | When |
+|------|--------|------|
+| **Goal 01** | 1,000 useful documents | Goal 1 |
+| **Goal 02** | 10,000 useful documents | Goal 2 |
+| **Goal 03** | 50,000 useful documents | Goal 3 |
+| **Goal 04** | Expand sources | Goal 8+ |
+| **Goal 05** | Evaluate whether larger scale is necessary | After Goal 8 |
+
+**Do NOT promise 500k documents as an early requirement.**
+
+---
+
 ## 1. Phase Overview
 
 | Phase | Name | Focus | Duration | Key Deliverable |
 |-------|------|-------|----------|-----------------|
 | **0** | Foundation & Research | Product definition, architecture, source strategy, evaluation design | 4-6 weeks | This documentation set |
-| **1** | Data Foundation | Ingestion pipeline, core sources, normalization, deduplication, basic indexing | 6-8 weeks | 500k+ docs indexed; searchable |
+| **1** | Data Foundation | Ingestion pipeline, core sources, normalization, deduplication, basic indexing | 6-8 weeks | 1,000+ docs indexed; searchable |
 | **2** | Search MVP | Hybrid search, basic ranking, search API, minimal UI | 4-6 weeks | Working search engine |
 | **3** | Search Quality | Query understanding, reranking, evaluation, relevance tuning | 6-8 weeks | nDCG@10 > 0.65 |
 | **4** | Personalized Discovery | Follow system, briefing feed, implicit personalization, trending | 6-8 weeks | Daily active usage |
@@ -73,17 +102,17 @@
 
 | Week | Sources | Target Volume |
 |------|---------|---------------|
-| 1-2 | ArXiv (CS categories) | ~200k papers |
-| 2-3 | GitHub (top 5k ML repos + webhooks) | ~50k releases |
-| 3-4 | HF Hub (Models + Daily Papers) | ~500k models + papers |
-| 4-5 | Blogs (20 major RSS feeds) | ~10k posts |
-| 5-6 | Papers with Code (API) | ~50k benchmarks |
-| 6-7 | Semantic Scholar (citations, authors) | ~100k papers |
-| 7-8 | Crossref (DOI metadata) | Supplemental |
+| 1-2 | ArXiv (CS categories, recent only) | ~1,000 papers |
+| 2-3 | GitHub (top 100 ML repos + webhooks) | ~500 releases |
+| 3-4 | HF Hub (Models + Daily Papers, recent) | ~2,000 models + papers |
+| 4-5 | Blogs (5 major RSS feeds) | ~200 posts |
+| 5-6 | Papers with Code (API, recent) | ~500 benchmarks |
+
+**Scale increases only after evaluation results justify it.**
 
 ### 3.3 Phase 1 Exit Criteria
 
-- [ ] 500k+ documents indexed across 5+ sources
+- [ ] 1,000+ documents indexed across 1-2 sources
 - [ ] Ingestion lag < 1 hour for Tier 1 sources
 - [ ] Deduplication precision > 95% (manual audit)
 - [ ] Basic search works via API (no UI yet)
@@ -322,17 +351,19 @@
 
 | Phase | Engineering Weeks | Infrastructure Cost (Monthly) |
 |-------|-------------------|-------------------------------|
-| 0 | 4-6 (research) | $50 (dev) |
-| 1 | 6-8 | $200 (dev + GPU for embedding) |
-| 2 | 4-6 | $300 |
-| 3 | 6-8 | $400 (GPU for reranker) |
-| 4 | 6-8 | $400 |
-| 5 | 6-8 | $500 |
-| 6 | 8-12 | $800 (LLM API costs) |
-| 7 | Ongoing | $1000+ (prod) |
+| 0 | 4-6 (research) | $0 (dev) |
+| 1 | 6-8 | $0 (local dev, open-source only) |
+| 2 | 4-6 | $0 (local dev) |
+| 3 | 6-8 | $0 (local dev, GPU if available) |
+| 4 | 6-8 | $0 |
+| 5 | 6-8 | $0 |
+| 6 | 8-12 | $0 (local models) |
+| 7 | Ongoing | Production budget TBD |
 
-**Total to Phase 3 (Search MVP + Quality)**: ~20-28 weeks (5-7 months)
-**Total to Phase 6 (Full Vision)**: ~40-56 weeks (10-14 months)
+**Total to Phase 3 (Search MVP + Quality)**: ~20-28 weeks (5-7 months) at $0 infrastructure cost
+**Total to Phase 6 (Full Vision)**: ~40-56 weeks (10-14 months) at $0 infrastructure cost
+
+> All development targets $0 infrastructure cost. GPU usage assumes local hardware or free tier where available.
 
 ---
 
@@ -354,7 +385,7 @@
 
 | Decision Point | Criteria | If No-Go |
 |----------------|----------|----------|
-| **End of Phase 1** | 500k docs indexed; lag < 1h; dedupe > 95% | Simplify sources; reduce scope |
+| **End of Phase 1** | 1,000+ docs indexed; lag < 1h; dedupe > 95% | Simplify sources; reduce scope |
 | **End of Phase 2** | Search works; latency < 500ms; UI usable | Optimize ES/Vector config; defer UI polish |
 | **End of Phase 3** | nDCG@10 > 0.65; reranker helps | Revisit ranking signals; more training data |
 | **End of Phase 4** | Personalization lift > 10% in A/B | Strengthen explicit follows; defer implicit |

@@ -1,6 +1,6 @@
 # ADR-0003: Embedding Model: BAAI/bge-large-en-v1.5
 
-**Status**: Accepted
+**Status**: Accepted (candidate — validation required)
 **Date**: 2026-10-06
 **Deciders**: Rishi Sakhija
 **Technical Story**: Embedding model selection for semantic search
@@ -15,10 +15,11 @@ We need a dense embedding model for semantic search over technical documents (pa
 - Fast inference (CPU acceptable, GPU preferred)
 - Multilingual a plus (future)
 - Long context (512+ tokens) for abstracts + titles
+- **Local execution; no API dependency ($0 budget)**
 
 ## Decision
 
-**Choose BAAI/bge-large-en-v1.5** as the primary embedding model.
+**Choose BAAI/bge-large-en-v1.5** as the primary embedding model **candidate** (validation required on our technical corpus).
 
 **Fallback/Alternatives for specific uses**:
 - `BAAI/bge-m3` — if multilingual needed (1024 dim, multi-granularity)
@@ -41,9 +42,23 @@ We need a dense embedding model for semantic search over technical documents (pa
 
 - **bge-large-en-v1.5** hits the sweet spot: strong BEIR scores, MIT license, 512 context sufficient for title+abstract, fast inference
 - **BGE family** is widely adopted in open-source RAG; good community support
-- **1024 dim** balances quality with Qdrant index size (~4MB per 1M vectors vs 16MB for 3072-dim)
-- **No API dependency** — can run locally on CPU/GPU; no rate limits, no cost per request
+- **1024 dim** balances quality with index size
+- **No API dependency** — can run locally on CPU/GPU; no rate limits, no cost per request ($0 budget)
 - **Fine-tuning path**: Can fine-tune on our domain (technical queries + relevance judgments) if needed
+
+## Storage Calculation (Corrected)
+
+For **float32** (4 bytes per dimension):
+
+| Vectors | Dimensions | Bytes per Vector | Raw Vector Storage | Note |
+|---------|------------|------------------|---------------------|------|
+| 1 million | 1024 | 4,096 | ~4.1 GB | Before index/metadata overhead |
+| 10 million | 1024 | 4,096 | ~41 GB | Before index/metadata overhead |
+
+**Note**: Actual storage will be higher due to:
+- HNSW index overhead (graph structure, ~1.5-2x raw vectors)
+- Payload/metadata per vector
+- Quantization (if scalar quantization used: ~1 byte per dim = ~1 GB per 1M vectors)
 
 ## Consequences
 
@@ -61,6 +76,7 @@ We need a dense embedding model for semantic search over technical documents (pa
 ### Risks
 - **Model obsolescence**: Newer models (bge-m3, SFR) may surpass — monitor MTEB
 - **Mitigation**: Abstract embedding interface; swap model with re-index
+- **Validation required**: Actual quality on our technical corpus must be benchmarked
 
 ## Implementation Notes
 

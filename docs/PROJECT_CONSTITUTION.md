@@ -5,6 +5,21 @@
 
 ---
 
+## 0. Locked Project Goal
+
+**Primary Goal**: Build a personalized, vertical Tech Intelligence Engine that helps users discover, search, understand, and track the rapidly changing technology ecosystem through high-quality technical sources, entity relationships, freshness, personalization, and evidence-backed intelligence.
+
+**This is NOT**:
+- A Google replacement
+- A generic web search engine
+- An RSS/news aggregator
+- A chatbot wrapper
+- A code completion tool
+
+**Core Long-Term Value**: Search + Discovery + Tracking + Technical Context + Personalization + Evidence-backed Research.
+
+---
+
 ## 1. Project Identity
 
 | Attribute | Value |
@@ -175,10 +190,24 @@ New models, papers, frameworks, releases, and benchmarks appear daily. Existing 
 |------------|-------|-----------|
 | **Team size** | 1-3 engineers (current) | Architecture must be maintainable by small team |
 | **Budget** | <$500/mo infrastructure (Phase 0-2) | Self-hosted where possible; avoid managed services |
+| **Development Budget** | **$0** — no paid APIs/services required for MVP | Local-first; open-source only; free public APIs only |
 | **Latency budget** | Search p95 < 500ms | User-facing; impacts perceived quality |
 | **Ingestion throughput** | 10k docs/hour (Phase 1) | Must handle ArXiv daily volume (~1k) + GitHub releases |
 | **Storage** | < 10TB (Phase 1-2) | PostgreSQL + ES + Vector DB on single node initially |
 | **Language** | Python 3.11+ / TypeScript 5+ | Team expertise; ecosystem maturity |
+
+---
+
+### $0 Development Constraint
+
+Development and MVP validation must be achievable with a **$0 infrastructure/API budget** using open-source software, local execution, and genuinely free public APIs/services where available.
+
+- Paid APIs are **NOT required** for core development
+- Paid services may be considered only in a future production phase
+- External free services are **replaceable dependencies**
+- Architecture must remain **local-first**
+- No vendor should become a **hard dependency** for the MVP
+- Do NOT claim free tiers are permanent or unlimited
 
 ---
 

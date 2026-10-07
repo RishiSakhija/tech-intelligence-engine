@@ -14,7 +14,7 @@ We need to ingest from 10+ sources (ArXiv, GitHub, HF Hub, RSS, Papers with Code
 - Fault tolerance (retries, dead letter queue)
 - Observability (lag, errors, volume)
 - Independent scaling per source
-- Exactly-once or at-least-once semantics
+- **At-least-once delivery with idempotent consumers for safe reprocessing**
 
 ## Decision
 
@@ -46,11 +46,12 @@ Each stage is a separate worker pool consuming from a Redis Stream, producing to
 
 ## Rationale
 
-- **Redis Streams**: Native to our stack (already using Redis for cache/rate limit); consumer groups for scaling; XREADGROUP for exactly-once semantics; stream trimming for bounded memory; low latency
+- **Redis Streams**: Native to our stack (already using Redis for cache/rate limit); consumer groups for scaling; XREADGROUP for at-least-once semantics; stream trimming for bounded memory; low latency
 - **Stage separation**: Each stage independently scalable (more enrich workers for LLM; fewer fetch workers)
 - **Backpressure**: Stream length metrics → auto-scaling signals
 - **Replay**: Can reprocess from any point (re-index, fix bugs)
 - **Simplicity**: Single Redis instance; no separate queue cluster needed at Phase 1-2 scale
+- **Idempotency**: Exactly-once achieved via idempotent consumers (source + source_id + content_hash keys), not queue semantics
 
 ## Consequences
 
